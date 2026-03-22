@@ -15,7 +15,7 @@ clear
 # Main Banner
 toilet -f slant "ARIYAN TOOL" | lolcat
 
-# 🔴 RED BANNER
+# RED BANNER
 echo -e "${red}"
 figlet "SETUP TOOLS"
 echo -e "${white}"
@@ -28,7 +28,7 @@ echo -e "${cyan}=================================="
 echo ""
 echo -e "${green}[1] Full Termux Setup"
 echo -e "${green}[2] Install Basic Packages"
-echo -e "${green}[3] Set Auto Banner"
+echo -e "${green}[3] Set Custom Banner"
 echo -e "${green}[4] Show System Info"
 echo -e "${green}[5] Update Tool"
 echo -e "${green}[0] Exit"
@@ -62,9 +62,45 @@ then
 elif [ "$opt" == "3" ]
 then
     clear
-    echo -e "${yellow}Setting Banner..."
+    echo -e "${yellow}Set Your Custom Banner"
 
-cat > ~/.bashrc << 'EOF'
+    read -p "Enter Your Name: " name
+
+cat > ~/.bashrc << EOF
 clear
-toilet -f slant "ARIYAN" | lolcat
-echo "Welcome Boss
+toilet -f slant "$name" | lolcat
+echo "Welcome $name"
+EOF
+
+    echo -e "${green}[✓] Banner Set Successfully for $name!"
+    sleep 2
+
+#================= OPTION 4 =================#
+elif [ "$opt" == "4" ]
+then
+    clear
+    neofetch
+    read -p "Press Enter to continue..."
+
+#================= OPTION 5 =================#
+elif [ "$opt" == "5" ]
+then
+    clear
+    echo -e "${yellow}Updating Tool..."
+    git pull
+    echo -e "${green}[✓] Tool Updated!"
+    sleep 2
+
+#================= EXIT =================#
+elif [ "$opt" == "0" ]
+then
+    echo -e "${red}Goodbye Boss 😎"
+    exit
+
+#================= INVALID =================#
+else
+    echo -e "${red}Invalid Option!"
+    sleep 1
+fi
+
+done
