@@ -8,14 +8,14 @@ yellow='\033[1;33m'
 white='\033[1;37m'
 
 #================= START =================#
-while True:
+while true
 do
 clear
 
 # Main Banner
 toilet -f slant "ARIYAN TOOL" | lolcat
 
-# 🔴 NEW RED BANNER
+# 🔴 RED BANNER
 echo -e "${red}"
 figlet "SETUP TOOLS"
 echo -e "${white}"
@@ -63,43 +63,8 @@ elif [ "$opt" == "3" ]
 then
     clear
     echo -e "${yellow}Setting Banner..."
-    
+
 cat > ~/.bashrc << 'EOF'
 clear
 toilet -f slant "ARIYAN" | lolcat
-echo "Welcome Boss 😎" | lolcat
-EOF
-
-    echo -e "${green}[✓] Banner Set Successfully!"
-    sleep 2
-
-#================= OPTION 4 =================#
-elif [ "$opt" == "4" ]
-then
-    clear
-    neofetch
-    echo ""
-    read -p "Press Enter to go back..."
-
-#================= OPTION 5 =================#
-elif [ "$opt" == "5" ]
-then
-    clear
-    echo -e "${yellow}Updating Tool..."
-    sleep 2
-    echo -e "${green}Tool Already Latest Version 😎"
-    sleep 2
-
-#================= EXIT =================#
-elif [ "$opt" == "0" ]
-then
-    echo -e "${red}Exiting..."
-    exit
-
-#================= INVALID =================#
-else
-    echo -e "${red}Invalid Option!"
-    sleep 2
-fi
-
-done
+echo "Welcome Boss
