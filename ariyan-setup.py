@@ -8,7 +8,7 @@ yellow='\033[1;33m'
 white='\033[1;37m'
 
 #================= START =================#
-while true
+while True:
 do
 clear
 
