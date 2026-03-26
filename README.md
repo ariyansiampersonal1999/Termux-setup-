@@ -26,7 +26,11 @@ A simple Python-based tool to automatically setup Termux environment with requir
 
 ---
 
-## 📸 Preview
+## 📸 Screenshot
+
+<p align="center">
+  <img src="https://l.top4top.io/p_3736k62xi0.jpeg" width="700">
+</p>
 
 ## 👨‍💻 Developer
 
