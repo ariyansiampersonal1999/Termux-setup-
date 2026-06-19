@@ -8,7 +8,7 @@ CYAN='\033[1;36m'
 PURPLE='\033[1;35m'
 NC='\033[0m'
 
-#================ CHECK DEP =============#
+#================ DEP CHECK =============#
 for p in figlet toilet lolcat neofetch git
 do
 command -v $p >/dev/null 2>&1 || pkg install $p -y
@@ -16,7 +16,7 @@ done
 
 #================ LOADING ===============#
 loading() {
-echo -e "${CYAN}Starting System..."
+echo -e "${CYAN}Booting Dark System..."
 for i in {1..20}
 do
 printf "[%-20s] %d%%\r" "$(printf '#%.0s' $(seq 1 $i))" $((i*5))
@@ -29,19 +29,19 @@ echo ""
 banner() {
 clear
 
-echo -e "${PURPLE}"
+echo -e "${GREEN}"
 figlet -f slant "Termux Setup" | lolcat
 
 echo -e "${CYAN}"
 echo "╔══════════════════════════════════════╗"
-echo "║        ⚡ TERMUX SETUP TOOL ⚡       ║"
-echo "║           VERSION v6 PRO             ║"
+echo "║       ⚡ DARK ELITE SYSTEM ⚡        ║"
+echo "║        TERMUX CONTROL PANEL          ║"
 echo "╚══════════════════════════════════════╝"
 
 echo -e "${GREEN}"
-echo "➤ Status : ACTIVE"
-echo "➤ Mode   : ULTRA PREMIUM"
-echo "➤ Power  : MAX PERFORMANCE"
+echo "➤ STATUS : ONLINE"
+echo "➤ MODE   : DARK PREMIUM"
+echo "➤ POWER  : MAXIMUM"
 echo -e "${NC}"
 }
 
@@ -62,22 +62,63 @@ read -p "Enter Your Name: " name
 
 cat > ~/.bashrc << EOF
 clear
-echo -e "\033[1;31m"
+
+echo -e "\033[1;30m"
+clear
+
+echo -e "\033[1;32m"
 figlet -f slant "$name" | lolcat
 
 echo -e "\033[1;36m"
-echo "===================================="
-echo "        WELCOME BACK USER"
-echo "===================================="
+echo "╔══════════════════════════════════╗"
+echo "║        DARK ELITE MODE           ║"
+echo "║     PREMIUM TERMINAL ACTIVE      ║"
+echo "╚══════════════════════════════════╝"
 
 echo -e "\033[1;32m"
-echo "User : $name"
-echo "Mode : PREMIUM ACTIVE"
-echo "===================================="
+echo "USER   : $name"
+echo "STATUS : ONLINE"
+echo "MODE   : DARK ELITE"
+echo "POWER  : MAXIMUM"
+echo ""
 EOF
 
-echo -e "${GREEN}[✓] CUSTOM HIGH-QUALITY BANNER SET"
+echo -e "${GREEN}[✓] CUSTOM DARK BANNER SET SUCCESS"
 sleep 2
+}
+
+#================ DEVELOPER INFO ========#
+dev_info() {
+clear
+
+echo -e "${RED}"
+figlet -f slant "Developer" | lolcat
+
+echo -e "${CYAN}"
+echo "╔══════════════════════════════════════╗"
+echo "║          👨‍💻 DEVELOPER INFO          ║"
+echo "╚══════════════════════════════════════╝"
+
+echo -e "${GREEN}"
+echo "Name     : ARIYAN"
+echo "Tool     : Termux Setup Tool"
+echo "Version  : 6.0 DARK PREMIUM"
+echo "Platform : Termux (Android)"
+echo "Type     : Automation Tool"
+
+echo ""
+echo -e "${YELLOW}FEATURES:"
+echo "- Auto Setup"
+echo "- Dark UI System"
+echo "- Custom Banner"
+echo "- System Info Dashboard"
+echo "- Fast Installer"
+
+echo ""
+echo -e "${CYAN}⚠️ EDUCATIONAL USE ONLY"
+echo -e "${NC}"
+
+read -p "Press Enter..."
 }
 
 #================ MENU ================#
@@ -89,9 +130,10 @@ sysinfo
 echo ""
 echo -e "${YELLOW}[1] Full Setup"
 echo -e "${YELLOW}[2] Install Basic Tools"
-echo -e "${YELLOW}[3] Set Custom Banner"
+echo -e "${YELLOW}[3] Set Custom Banner (Dark Premium)"
 echo -e "${YELLOW}[4] System Info"
 echo -e "${YELLOW}[5] Update Tool"
+echo -e "${YELLOW}[6] Developer Info"
 echo -e "${RED}[0] Exit"
 echo ""
 
@@ -104,7 +146,7 @@ loading
 pkg update -y && pkg upgrade -y
 pkg install python git wget curl figlet toilet ruby neofetch -y
 gem install lolcat
-echo -e "${GREEN}[✓] FULL SETUP COMPLETE"
+echo -e "${GREEN}[✓] FULL DARK SETUP COMPLETE"
 sleep 2
 ;;
 
@@ -132,8 +174,12 @@ echo -e "${GREEN}[✓] TOOL UPDATED"
 sleep 2
 ;;
 
+6)
+dev_info
+;;
+
 0)
-echo -e "${RED}GOOD BYE!"
+echo -e "${RED}GOOD BYE DARK USER!"
 exit
 ;;
 
