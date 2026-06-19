@@ -211,7 +211,7 @@ figlet -f slant "DEVELOPER" | lolcat
 
 echo ""
 echo -e "${CYAN}══════════════════════════════════════"
-echo "Name      : Your Name"
+echo "Name      : Ariyan Siam"
 echo "Tool      : Termux Setup Tool Pro"
 echo "Version   : 1.0"
 echo "Platform  : Termux"
