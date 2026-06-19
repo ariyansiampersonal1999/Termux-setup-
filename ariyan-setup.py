@@ -4,67 +4,34 @@
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
-BLUE='\033[1;34m'
-PURPLE='\033[1;35m'
 CYAN='\033[1;36m'
-WHITE='\033[1;37m'
+PURPLE='\033[1;35m'
 NC='\033[0m'
 
-#================ INSTALL CHECK =================#
-install_deps() {
+#================ DEPENDENCY CHECK =================#
+check_deps() {
 
-pkgs="figlet toilet ruby git wget curl neofetch cmatrix tty-clock btop"
+pkgs="figlet toilet ruby git wget curl neofetch"
 
-for p in $pkgs
+for pkg in $pkgs
 do
-command -v $p >/dev/null 2>&1 || pkg install $p -y
+command -v $pkg >/dev/null 2>&1 || pkg install -y $pkg
 done
 
 command -v lolcat >/dev/null 2>&1 || gem install lolcat
-}
 
-#================ BOOT =================#
-boot_animation() {
-
-clear
-
-msgs=(
-"Loading Neural Engine"
-"Initializing Quantum Core"
-"Loading System Kernel"
-"Scanning Security Layer"
-"Activating Dashboard"
-"Connecting Terminal"
-"Cyber System Ready"
-)
-
-for msg in "${msgs[@]}"
-do
-printf "${GREEN}➜ %s ${NC}" "$msg"
-
-for i in {1..15}
-do
-printf "■"
-sleep 0.03
-done
-
-echo " [OK]"
-sleep 0.15
-done
-
-sleep 1
 }
 
 #================ LOADING =================#
 loading() {
 
-echo ""
+clear
+
+echo -e "${CYAN}Initializing System...${NC}"
 
 for i in {1..100}
 do
-
-printf "\r${CYAN}["
-
+printf "\r${GREEN}["
 for ((j=0;j<i/2;j++))
 do
 printf "█"
@@ -81,6 +48,7 @@ sleep 0.01
 done
 
 echo ""
+sleep 1
 }
 
 #================ BANNER =================#
@@ -88,73 +56,82 @@ banner() {
 
 clear
 
-figlet -f Bloody "CYBER" | lolcat -a -d 2
-figlet -f Bloody "TERMINAL" | lolcat -a -d 2
+figlet -f slant "TERMUX" | lolcat
+figlet -f slant "SETUP TOOL" | lolcat
 
 echo -e "${CYAN}"
-echo "╔════════════════════════════════════════════════════╗"
-echo "║             CYBER TERMINAL PRO V10               ║"
-echo "╠════════════════════════════════════════════════════╣"
-echo "║ STATUS    : ONLINE                               ║"
-echo "║ SECURITY  : ACTIVE                               ║"
-echo "║ MODE      : PREMIUM                              ║"
-echo "║ POWER     : MAXIMUM                              ║"
-echo "╚════════════════════════════════════════════════════╝"
+echo "╔══════════════════════════════════════════════╗"
+echo "║          TERMUX SETUP TOOL PRO              ║"
+echo "║          CUSTOM BANNER EDITION              ║"
+echo "╚══════════════════════════════════════════════╝"
 echo -e "${NC}"
+
 }
 
 #================ SYSTEM INFO =================#
-sysinfo() {
+system_info() {
+
+clear
 
 echo -e "${GREEN}"
-echo " USER      : $(whoami)"
-echo " DEVICE    : $(getprop ro.product.model 2>/dev/null)"
-echo " ANDROID   : $(getprop ro.build.version.release 2>/dev/null)"
-echo " KERNEL    : $(uname -r)"
-echo " TIME      : $(date '+%H:%M:%S')"
+echo "User      : $(whoami)"
+echo "Device    : $(getprop ro.product.model 2>/dev/null)"
+echo "Android   : $(getprop ro.build.version.release 2>/dev/null)"
+echo "Kernel    : $(uname -r)"
+echo "Time      : $(date)"
 echo -e "${NC}"
-}
 
-#================ MATRIX =================#
-matrix_mode() {
-clear
-cmatrix -ab
-}
-
-#================ CLOCK =================#
-clock_mode() {
-clear
-tty-clock -cs -C 6
-}
-
-#================ SYSTEM MONITOR =================#
-monitor_mode() {
-clear
-btop
-}
-
-#================ DASHBOARD =================#
-dashboard() {
-
-clear
-
-echo -e "${CYAN}"
-echo "╔══════════════════════════════════════╗"
-echo "║      CYBER CONTROL DASHBOARD         ║"
-echo "╚══════════════════════════════════════╝"
 echo ""
-
-echo " USER     : $(whoami)"
-echo " DEVICE   : $(getprop ro.product.model 2>/dev/null)"
-echo " ANDROID  : $(getprop ro.build.version.release 2>/dev/null)"
-echo " KERNEL   : $(uname -r)"
-echo " DATE     : $(date)"
-echo ""
-
 neofetch
 
-echo ""
 read -p "Press Enter..."
+}
+
+#================ FULL SETUP =================#
+full_setup() {
+
+loading
+
+pkg update -y
+pkg upgrade -y
+
+pkg install -y \
+python \
+python-pip \
+git \
+curl \
+wget \
+nano \
+vim \
+figlet \
+toilet \
+ruby \
+neofetch
+
+gem install lolcat
+
+echo ""
+echo -e "${GREEN}[✓] Full Setup Completed${NC}"
+
+sleep 2
+}
+
+#================ BASIC TOOLS =================#
+basic_tools() {
+
+loading
+
+pkg install -y \
+python \
+git \
+curl \
+wget \
+nano
+
+echo ""
+echo -e "${GREEN}[✓] Basic Tools Installed${NC}"
+
+sleep 2
 }
 
 #================ CUSTOM BANNER =================#
@@ -162,64 +139,104 @@ custom_banner() {
 
 clear
 
-read -p "Enter Your Name: " name
-
-cat > ~/.bashrc << EOF
-clear
-
-figlet -f Bloody "$name" | lolcat -a -d 2
-
-echo "╔══════════════════════════════════════╗"
-echo "║      CYBER TERMINAL PRO              ║"
-echo "║      STATUS : ONLINE                 ║"
-echo "║      MODE   : PREMIUM                ║"
-echo "╚══════════════════════════════════════╝"
+figlet -f slant "CUSTOM" | lolcat
+figlet -f slant "BANNER" | lolcat
 
 echo ""
+
+read -p "Enter Your Name : " uname
+
+cat > ~/.bashrc << EOF
+
+clear
+
+echo -e "\033[1;32m"
+
+figlet -f slant "$uname" | lolcat
+
+echo -e "\033[1;36m"
+echo "╔════════════════════════════════════════════╗"
+echo "║           CYBER TERMUX SYSTEM             ║"
+echo "╠════════════════════════════════════════════╣"
+echo "║ USER      : $uname"
+echo "║ STATUS    : ONLINE"
+echo "║ SECURITY  : ACTIVE"
+echo "║ MODE      : PREMIUM"
+echo "╚════════════════════════════════════════════╝"
+
+echo ""
+
 neofetch
+
+echo ""
+echo " Welcome Back $uname"
+echo ""
+
 EOF
 
 echo ""
-echo "[✓] Custom Banner Installed"
+echo -e "${GREEN}[✓] Banner Installed Successfully${NC}"
+
+sleep 2
+}
+
+#================ REMOVE BANNER =================#
+remove_banner() {
+
+echo "" > ~/.bashrc
+
+echo -e "${GREEN}[✓] Banner Removed${NC}"
+
+sleep 2
+}
+
+#================ UPDATE TOOL =================#
+update_tool() {
+
+loading
+
+git pull
+
+echo -e "${GREEN}[✓] Tool Updated${NC}"
+
 sleep 2
 }
 
 #================ DEVELOPER =================#
-developer() {
+developer_info() {
 
 clear
 
-figlet -f slant "Developer" | lolcat
+figlet -f slant "DEVELOPER" | lolcat
 
 echo ""
-echo "══════════════════════════════════════"
-echo " Name     : Custom User"
-echo " Version  : CYBER TERMINAL PRO V10"
-echo " Type     : Dashboard Edition"
-echo "══════════════════════════════════════"
+echo -e "${CYAN}══════════════════════════════════════"
+echo "Name      : Your Name"
+echo "Tool      : Termux Setup Tool Pro"
+echo "Version   : 1.0"
+echo "Platform  : Termux"
+echo "══════════════════════════════════════${NC}"
+
 echo ""
 
 read -p "Press Enter..."
 }
 
 #================ START =================#
-
-install_deps
-boot_animation
+check_deps
 
 while true
 do
 
 banner
-sysinfo
 
 echo ""
-echo -e "${YELLOW}[1] Full Setup"
-echo -e "${YELLOW}[2] Dashboard"
-echo -e "${YELLOW}[3] Matrix Mode"
-echo -e "${YELLOW}[4] Digital Clock"
-echo -e "${YELLOW}[5] System Monitor"
-echo -e "${YELLOW}[6] Custom Banner"
+echo -e "${YELLOW}[1] Full Termux Setup"
+echo -e "${YELLOW}[2] Install Basic Tools"
+echo -e "${YELLOW}[3] Create Custom Banner"
+echo -e "${YELLOW}[4] Remove Banner"
+echo -e "${YELLOW}[5] System Information"
+echo -e "${YELLOW}[6] Update Tool"
 echo -e "${YELLOW}[7] Developer Info"
 echo -e "${RED}[0] Exit"
 echo ""
@@ -229,46 +246,41 @@ read -p "Choose Option : " opt
 case $opt in
 
 1)
-loading
-pkg update -y
-pkg upgrade -y
-echo ""
-echo "[✓] Setup Complete"
-sleep 2
+full_setup
 ;;
 
 2)
-dashboard
+basic_tools
 ;;
 
 3)
-matrix_mode
-;;
-
-4)
-clock_mode
-;;
-
-5)
-monitor_mode
-;;
-
-6)
 custom_banner
 ;;
 
+4)
+remove_banner
+;;
+
+5)
+system_info
+;;
+
+6)
+update_tool
+;;
+
 7)
-developer
+developer_info
 ;;
 
 0)
 clear
-figlet -f slant "GOODBYE" | lolcat
+figlet -f slant "GOOD BYE" | lolcat
 exit
 ;;
 
 *)
-echo "Invalid Option"
+echo -e "${RED}Invalid Option${NC}"
 sleep 1
 ;;
 
