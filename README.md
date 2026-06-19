@@ -69,7 +69,7 @@ With a single execution, the tool updates the system, installs essential package
 pkg update -y && pkg upgrade -y
 pkg install git python -y
 git clone https://github.com/ariyansiampersonal1999/Termux-setup-.git
-cd 
+cd ariyan-setup.py
 python setup.py
 ```
 
