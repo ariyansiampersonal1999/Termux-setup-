@@ -1,192 +1,277 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
-#================ COLORS ================#
+#================ COLORS =================#
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
-CYAN='\033[1;36m'
+BLUE='\033[1;34m'
 PURPLE='\033[1;35m'
+CYAN='\033[1;36m'
+WHITE='\033[1;37m'
 NC='\033[0m'
 
-#================ DEP CHECK =============#
-for p in figlet toilet lolcat neofetch git
+#================ INSTALL CHECK =================#
+install_deps() {
+
+pkgs="figlet toilet ruby git wget curl neofetch cmatrix tty-clock btop"
+
+for p in $pkgs
 do
 command -v $p >/dev/null 2>&1 || pkg install $p -y
 done
 
-#================ LOADING ===============#
-loading() {
-echo -e "${CYAN}Booting Dark System..."
-for i in {1..20}
+command -v lolcat >/dev/null 2>&1 || gem install lolcat
+}
+
+#================ BOOT =================#
+boot_animation() {
+
+clear
+
+msgs=(
+"Loading Neural Engine"
+"Initializing Quantum Core"
+"Loading System Kernel"
+"Scanning Security Layer"
+"Activating Dashboard"
+"Connecting Terminal"
+"Cyber System Ready"
+)
+
+for msg in "${msgs[@]}"
 do
-printf "[%-20s] %d%%\r" "$(printf '#%.0s' $(seq 1 $i))" $((i*5))
-sleep 0.05
+printf "${GREEN}➜ %s ${NC}" "$msg"
+
+for i in {1..15}
+do
+printf "■"
+sleep 0.03
 done
+
+echo " [OK]"
+sleep 0.15
+done
+
+sleep 1
+}
+
+#================ LOADING =================#
+loading() {
+
+echo ""
+
+for i in {1..100}
+do
+
+printf "\r${CYAN}["
+
+for ((j=0;j<i/2;j++))
+do
+printf "█"
+done
+
+for ((j=i/2;j<50;j++))
+do
+printf " "
+done
+
+printf "] %d%%${NC}" "$i"
+
+sleep 0.01
+done
+
 echo ""
 }
 
-#================ BANNER ================#
+#================ BANNER =================#
 banner() {
+
 clear
 
+figlet -f Bloody "CYBER" | lolcat -a -d 2
+figlet -f Bloody "TERMINAL" | lolcat -a -d 2
+
+echo -e "${CYAN}"
+echo "╔════════════════════════════════════════════════════╗"
+echo "║             CYBER TERMINAL PRO V10               ║"
+echo "╠════════════════════════════════════════════════════╣"
+echo "║ STATUS    : ONLINE                               ║"
+echo "║ SECURITY  : ACTIVE                               ║"
+echo "║ MODE      : PREMIUM                              ║"
+echo "║ POWER     : MAXIMUM                              ║"
+echo "╚════════════════════════════════════════════════════╝"
+echo -e "${NC}"
+}
+
+#================ SYSTEM INFO =================#
+sysinfo() {
+
 echo -e "${GREEN}"
-figlet -f slant "Termux Setup" | lolcat
+echo " USER      : $(whoami)"
+echo " DEVICE    : $(getprop ro.product.model 2>/dev/null)"
+echo " ANDROID   : $(getprop ro.build.version.release 2>/dev/null)"
+echo " KERNEL    : $(uname -r)"
+echo " TIME      : $(date '+%H:%M:%S')"
+echo -e "${NC}"
+}
+
+#================ MATRIX =================#
+matrix_mode() {
+clear
+cmatrix -ab
+}
+
+#================ CLOCK =================#
+clock_mode() {
+clear
+tty-clock -cs -C 6
+}
+
+#================ SYSTEM MONITOR =================#
+monitor_mode() {
+clear
+btop
+}
+
+#================ DASHBOARD =================#
+dashboard() {
+
+clear
 
 echo -e "${CYAN}"
 echo "╔══════════════════════════════════════╗"
-echo "║       ⚡ DARK ELITE SYSTEM ⚡        ║"
-echo "║        TERMUX CONTROL PANEL          ║"
+echo "║      CYBER CONTROL DASHBOARD         ║"
 echo "╚══════════════════════════════════════╝"
+echo ""
 
-echo -e "${GREEN}"
-echo "➤ STATUS : ONLINE"
-echo "➤ MODE   : DARK PREMIUM"
-echo "➤ POWER  : MAXIMUM"
-echo -e "${NC}"
+echo " USER     : $(whoami)"
+echo " DEVICE   : $(getprop ro.product.model 2>/dev/null)"
+echo " ANDROID  : $(getprop ro.build.version.release 2>/dev/null)"
+echo " KERNEL   : $(uname -r)"
+echo " DATE     : $(date)"
+echo ""
+
+neofetch
+
+echo ""
+read -p "Press Enter..."
 }
 
-#================ SYSTEM INFO ===========#
-sysinfo() {
-echo -e "${GREEN}"
-echo "User    : $(whoami)"
-echo "Device  : $(getprop ro.product.model)"
-echo "Android : $(getprop ro.build.version.release)"
-echo "Kernel  : $(uname -r)"
-echo "Time    : $(date '+%H:%M:%S')"
-echo -e "${NC}"
-}
+#================ CUSTOM BANNER =================#
+custom_banner() {
 
-#================ CUSTOM BANNER =========#
-set_banner() {
+clear
+
 read -p "Enter Your Name: " name
 
 cat > ~/.bashrc << EOF
 clear
 
-echo -e "\033[1;30m"
-clear
+figlet -f Bloody "$name" | lolcat -a -d 2
 
-echo -e "\033[1;32m"
-figlet -f slant "$name" | lolcat
+echo "╔══════════════════════════════════════╗"
+echo "║      CYBER TERMINAL PRO              ║"
+echo "║      STATUS : ONLINE                 ║"
+echo "║      MODE   : PREMIUM                ║"
+echo "╚══════════════════════════════════════╝"
 
-echo -e "\033[1;36m"
-echo "╔══════════════════════════════════╗"
-echo "║        DARK ELITE MODE           ║"
-echo "║     PREMIUM TERMINAL ACTIVE      ║"
-echo "╚══════════════════════════════════╝"
-
-echo -e "\033[1;32m"
-echo "USER   : $name"
-echo "STATUS : ONLINE"
-echo "MODE   : DARK ELITE"
-echo "POWER  : MAXIMUM"
 echo ""
+neofetch
 EOF
 
-echo -e "${GREEN}[✓] CUSTOM DARK BANNER SET SUCCESS"
+echo ""
+echo "[✓] Custom Banner Installed"
 sleep 2
 }
 
-#================ DEVELOPER INFO ========#
-dev_info() {
+#================ DEVELOPER =================#
+developer() {
+
 clear
 
-echo -e "${RED}"
 figlet -f slant "Developer" | lolcat
 
-echo -e "${CYAN}"
-echo "╔══════════════════════════════════════╗"
-echo "║          👨‍💻 DEVELOPER INFO          ║"
-echo "╚══════════════════════════════════════╝"
-
-echo -e "${GREEN}"
-echo "Name     : ARIYAN"
-echo "Tool     : Termux Setup Tool"
-echo "Version  : 6.0 DARK PREMIUM"
-echo "Platform : Termux (Android)"
-echo "Type     : Automation Tool"
-
 echo ""
-echo -e "${YELLOW}FEATURES:"
-echo "- Auto Setup"
-echo "- Dark UI System"
-echo "- Custom Banner"
-echo "- System Info Dashboard"
-echo "- Fast Installer"
-
+echo "══════════════════════════════════════"
+echo " Name     : Custom User"
+echo " Version  : CYBER TERMINAL PRO V10"
+echo " Type     : Dashboard Edition"
+echo "══════════════════════════════════════"
 echo ""
-echo -e "${CYAN}⚠️ EDUCATIONAL USE ONLY"
-echo -e "${NC}"
 
 read -p "Press Enter..."
 }
 
-#================ MENU ================#
+#================ START =================#
+
+install_deps
+boot_animation
+
 while true
 do
+
 banner
 sysinfo
 
 echo ""
 echo -e "${YELLOW}[1] Full Setup"
-echo -e "${YELLOW}[2] Install Basic Tools"
-echo -e "${YELLOW}[3] Set Custom Banner (Dark Premium)"
-echo -e "${YELLOW}[4] System Info"
-echo -e "${YELLOW}[5] Update Tool"
-echo -e "${YELLOW}[6] Developer Info"
+echo -e "${YELLOW}[2] Dashboard"
+echo -e "${YELLOW}[3] Matrix Mode"
+echo -e "${YELLOW}[4] Digital Clock"
+echo -e "${YELLOW}[5] System Monitor"
+echo -e "${YELLOW}[6] Custom Banner"
+echo -e "${YELLOW}[7] Developer Info"
 echo -e "${RED}[0] Exit"
 echo ""
 
-read -p "➤ Choose Option: " opt
+read -p "Choose Option : " opt
 
 case $opt in
 
 1)
 loading
-pkg update -y && pkg upgrade -y
-pkg install python git wget curl figlet toilet ruby neofetch -y
-gem install lolcat
-echo -e "${GREEN}[✓] FULL DARK SETUP COMPLETE"
+pkg update -y
+pkg upgrade -y
+echo ""
+echo "[✓] Setup Complete"
 sleep 2
 ;;
 
 2)
-loading
-pkg install python git wget curl -y
-echo -e "${GREEN}[✓] BASIC TOOLS INSTALLED"
-sleep 2
+dashboard
 ;;
 
 3)
-set_banner
+matrix_mode
 ;;
 
 4)
-clear
-neofetch
-read -p "Press Enter..."
+clock_mode
 ;;
 
 5)
-loading
-git pull
-echo -e "${GREEN}[✓] TOOL UPDATED"
-sleep 2
+monitor_mode
 ;;
 
 6)
-dev_info
+custom_banner
+;;
+
+7)
+developer
 ;;
 
 0)
-echo -e "${RED}GOOD BYE DARK USER!"
+clear
+figlet -f slant "GOODBYE" | lolcat
 exit
 ;;
 
 *)
-echo -e "${RED}INVALID OPTION"
+echo "Invalid Option"
 sleep 1
 ;;
 
 esac
+
 done
