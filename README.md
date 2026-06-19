@@ -68,8 +68,8 @@ With a single execution, the tool updates the system, installs essential package
 ```bash
 pkg update -y && pkg upgrade -y
 pkg install git python -y
-git clone YOUR_REPOSITORY_LINK
-cd TERMUX-SETUP-TOOL
+git clone https://github.com/ariyansiampersonal1999/Termux-setup-.git
+cd 
 python setup.py
 ```
 
