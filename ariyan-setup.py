@@ -5,7 +5,7 @@ RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 CYAN='\033[1;36m'
-WHITE='\033[1;37m'
+PURPLE='\033[1;35m'
 NC='\033[0m'
 
 #================ CHECK DEP =============#
@@ -14,12 +14,12 @@ do
 command -v $p >/dev/null 2>&1 || pkg install $p -y
 done
 
-#================ ANIMATION =============#
+#================ LOADING ===============#
 loading() {
 echo -e "${CYAN}Starting System..."
-for i in {1..25}
+for i in {1..20}
 do
-printf "[%-25s] %d%%\r" "$(printf '#%.0s' $(seq 1 $i))" $((i*4))
+printf "[%-20s] %d%%\r" "$(printf '#%.0s' $(seq 1 $i))" $((i*5))
 sleep 0.05
 done
 echo ""
@@ -28,34 +28,68 @@ echo ""
 #================ BANNER ================#
 banner() {
 clear
-echo -e "${RED}"
-figlet -f slant "ARIYAN" | lolcat
-echo -e "${CYAN}===================================="
-echo -e "${GREEN}   ULTRA PREMIUM TERMUX PANEL"
-echo -e "${CYAN}====================================${NC}"
-}
 
-#================ DASHBOARD ============#
-dashboard() {
+echo -e "${PURPLE}"
+figlet -f slant "Termux Setup" | lolcat
+
+echo -e "${CYAN}"
+echo "╔══════════════════════════════════════╗"
+echo "║        ⚡ TERMUX SETUP TOOL ⚡       ║"
+echo "║           VERSION v6 PRO             ║"
+echo "╚══════════════════════════════════════╝"
+
 echo -e "${GREEN}"
-echo "User   : $(whoami)"
-echo "Phone  : $(getprop ro.product.model)"
-echo "Android: $(getprop ro.build.version.release)"
-echo "Kernel : $(uname -r)"
-echo "Time   : $(date '+%H:%M:%S')"
+echo "➤ Status : ACTIVE"
+echo "➤ Mode   : ULTRA PREMIUM"
+echo "➤ Power  : MAX PERFORMANCE"
 echo -e "${NC}"
 }
 
-#================ MAIN MENU ============#
+#================ SYSTEM INFO ===========#
+sysinfo() {
+echo -e "${GREEN}"
+echo "User    : $(whoami)"
+echo "Device  : $(getprop ro.product.model)"
+echo "Android : $(getprop ro.build.version.release)"
+echo "Kernel  : $(uname -r)"
+echo "Time    : $(date '+%H:%M:%S')"
+echo -e "${NC}"
+}
+
+#================ CUSTOM BANNER =========#
+set_banner() {
+read -p "Enter Your Name: " name
+
+cat > ~/.bashrc << EOF
+clear
+echo -e "\033[1;31m"
+figlet -f slant "$name" | lolcat
+
+echo -e "\033[1;36m"
+echo "===================================="
+echo "        WELCOME BACK USER"
+echo "===================================="
+
+echo -e "\033[1;32m"
+echo "User : $name"
+echo "Mode : PREMIUM ACTIVE"
+echo "===================================="
+EOF
+
+echo -e "${GREEN}[✓] CUSTOM HIGH-QUALITY BANNER SET"
+sleep 2
+}
+
+#================ MENU ================#
 while true
 do
 banner
-dashboard
+sysinfo
 
 echo ""
 echo -e "${YELLOW}[1] Full Setup"
-echo -e "${YELLOW}[2] Install Tools"
-echo -e "${YELLOW}[3] Custom Banner"
+echo -e "${YELLOW}[2] Install Basic Tools"
+echo -e "${YELLOW}[3] Set Custom Banner"
 echo -e "${YELLOW}[4] System Info"
 echo -e "${YELLOW}[5] Update Tool"
 echo -e "${RED}[0] Exit"
@@ -68,28 +102,21 @@ case $opt in
 1)
 loading
 pkg update -y && pkg upgrade -y
-pkg install python git curl wget figlet toilet ruby neofetch -y
+pkg install python git wget curl figlet toilet ruby neofetch -y
 gem install lolcat
-echo -e "${GREEN}[✓] FULL SETUP DONE"
+echo -e "${GREEN}[✓] FULL SETUP COMPLETE"
 sleep 2
 ;;
 
 2)
 loading
-pkg install python git curl wget -y
+pkg install python git wget curl -y
 echo -e "${GREEN}[✓] BASIC TOOLS INSTALLED"
 sleep 2
 ;;
 
 3)
-read -p "Enter Banner Name: " name
-cat > ~/.bashrc << EOF
-clear
-figlet -f slant "$name" | lolcat
-echo "Welcome $name"
-EOF
-echo -e "${GREEN}[✓] CUSTOM BANNER SET"
-sleep 2
+set_banner
 ;;
 
 4)
