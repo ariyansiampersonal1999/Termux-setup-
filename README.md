@@ -1,132 +1,74 @@
-# 🚀 Termux Setup Tool Pro
+🚀 Termux Setup Tool Pro
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Termux-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Language-Bash-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Version-v1.0-red?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
-</p>
-
-<p align="center">
+<img src="https://img.shields.io/badge/Platform-Termux-blue?style=for-the-badge">
+<img src="https://img.shields.io/badge/Language-Bash-green?style=for-the-badge">
+<img src="https://img.shields.io/badge/Version-v1.0-red?style=for-the-badge">
+<img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+</p><p align="center">
   <h3 align="center">⚡ Professional Termux Setup & Customization Tool ⚡</h3>
-</p>
+</p><p align="center">
+A modern all-in-one Termux setup tool designed to automate package installation, create custom startup banners, configure the terminal environment, and provide a premium user experience.
+</p>---
+
+📸 Screenshots
+
+🖥 Main Dashboard
 
 <p align="center">
-A modern all-in-one Termux setup tool designed to automate package installation,
-create custom startup banners, configure the terminal environment, and provide
-a premium user experience.
-</p>
+<img src="https://i.imgur.com/J3Vw067.jpeg" width="100%">
+</p><p align="center">
+Professional Dashboard Interface
+</p>---
 
----
-
-# 📸 Screenshots
-
-## 🖥 Main Dashboard
+🎨 Custom Banner System
 
 <p align="center">
-  <img src="https://i.imgur.com/J3Vw067.jpeg" width="100%">
-</p>
+<img src="https://i.imgur.com/N4Mswlt.jpeg" width="100%">
+</p><p align="center">
+Personalized Startup Banner
+</p>---
 
-<p align="center">
-  Professional Dashboard Interface
-</p>
+✨ Features
 
----
+⚙️ Setup Features
 
-## 🎨 Custom Banner System
+- ✅ Full Termux Setup
+- ✅ Automatic Package Installation
+- ✅ Essential Development Tools
+- ✅ Fast & Lightweight
+- ✅ One Click Setup
 
-<p align="center">
-  <img src="https://i.imgur.com/N4Mswlt.jpeg" width="100%">
-</p>
+🎨 Customization Features
 
-<p align="center">
-  Personalized Startup Banner
-</p>
+- ✅ Custom Startup Banner
+- ✅ Personalized Username Banner
+- ✅ Automatic Banner Loading
+- ✅ Professional UI Design
+- ✅ Hacker Style Interface
+- ✅ Colorful Terminal Experience
 
----
+📊 System Utilities
 
-# 📖 Overview
+- ✅ Device Information
+- ✅ Android Version Detection
+- ✅ Kernel Information
+- ✅ Current Time Display
+- ✅ Neofetch Integration
 
-Termux Setup Tool Pro is a powerful automation utility for Android users who use Termux.
+🔄 Maintenance
 
-This tool helps users:
-
-- Setup Termux quickly
-- Install essential packages
-- Customize startup banners
-- View system information
-- Manage updates
-- Improve terminal appearance
-
-No advanced knowledge required.
-
-Everything can be managed through a simple interactive menu.
-
----
-
-# ✨ Features
-
-## ⚙️ Setup Features
-
-✔ Full Termux Setup
-
-✔ Basic Package Installation
-
-✔ Automatic Dependency Installation
-
-✔ One Click Environment Configuration
-
-✔ Fast Installation Process
+- ✅ Tool Update System
+- ✅ Banner Reset Option
+- ✅ Easy Configuration
+- ✅ Lightweight Environment
 
 ---
 
-## 🎨 Customization Features
-
-✔ Custom Startup Banner
-
-✔ Personalized Username Banner
-
-✔ Automatic Banner Loading
-
-✔ Colorful Interface
-
-✔ Hacker Style Theme
-
-✔ Professional Terminal Look
-
----
-
-## 📊 System Utilities
-
-✔ Device Information
-
-✔ Android Version Detection
-
-✔ Kernel Information
-
-✔ Current Time Display
-
-✔ Neofetch Integration
-
----
-
-## 🔄 Maintenance
-
-✔ Tool Update System
-
-✔ Banner Reset Option
-
-✔ Easy Configuration
-
-✔ Lightweight Design
-
----
-
-# 📦 Installed Packages
+📦 Installed Packages
 
 The Full Setup option installs:
 
-```text
 Python
 Python-pip
 Git
@@ -139,53 +81,45 @@ Figlet
 Toilet
 Lolcat
 Neofetch
-```
 
 ---
 
-# 📥 Installation
+⚡ Quick Installation
 
-## Update Packages
+pkg update -y && pkg upgrade -y && \
+pkg install git -y && \
+git clone https://github.com/ariyansiampersonal1999/Termux-setup-.git && \
+cd Termux-Setup- && \
+bash ariyan-setup.sh
 
-```bash
+---
+
+📥 Installation
+
+Update Packages
+
 pkg update -y && pkg upgrade -y
-```
 
-## Install Git
+Install Git
 
-```bash
 pkg install git -y
-```
 
-## Clone Repository
+Clone Repository
 
-```bash
-git clone https://github.com/YOUR_USERNAME/Termux-Setup-Tool-Pro.git
-```
+git clone https://github.com/ariyansiampersonal1999/Termux-setup-.git
 
-## Open Repository
+Open Repository
 
-```bash
-cd Termux-Setup-Tool-Pro
-```
+cd Termux-Setup-
 
-## Give Permission
+Run Tool
 
-```bash
-chmod +x setup.sh
-```
-
-## Run Tool
-
-```bash
-bash setup.sh
-```
+bash ariyan-setup.sh
 
 ---
 
-# 🖥 Main Menu
+🖥 Menu
 
-```text
 ╔════════════════════════════════════╗
 ║         TERMUX SETUP TOOL          ║
 ╠════════════════════════════════════╣
@@ -198,74 +132,40 @@ bash setup.sh
 ║ [7] Developer Info                ║
 ║ [0] Exit                          ║
 ╚════════════════════════════════════╝
-```
 
 ---
 
-# 🎨 Custom Banner Feature
+🎨 Custom Banner Feature
 
-Create your own personalized startup banner.
-
-When the user enters their name:
-
-```text
-Enter Your Name : ARIYAN
-```
-
-The tool automatically creates a startup banner and saves it inside:
-
-```bash
-~/.bashrc
-```
-
-Every time Termux starts, the custom banner will appear automatically.
+Users can create their own personalized startup banner.
 
 Example:
 
-```text
  █████╗ ██████╗ ██╗██╗   ██╗ █████╗ ███╗   ██╗
 
 ╔════════════════════════════════════╗
-║      CYBER TERMUX SYSTEM          ║
-║      STATUS : ONLINE              ║
-║      MODE   : PREMIUM             ║
+║       CYBER TERMUX SYSTEM         ║
+║       STATUS : ONLINE             ║
+║       MODE   : PREMIUM            ║
 ╚════════════════════════════════════╝
-```
+
+The banner will automatically appear whenever Termux starts.
 
 ---
 
-# 🔄 Updating
+📱 Compatibility
 
-Update the tool using:
-
-```bash
-git pull
-```
-
-Or choose:
-
-```text
-[6] Update Tool
-```
-
-from the main menu.
+Feature| Support
+Android| ✅
+Termux| ✅
+Root Required| ❌
+Internet Required| ✅
+Custom Banner| ✅
+Auto Setup| ✅
 
 ---
 
-# 📱 Compatibility
-
-| Feature | Support |
-|----------|----------|
-| Android | ✅ |
-| Termux | ✅ |
-| Root Required | ❌ |
-| Internet Required | ✅ |
-| Custom Banner | ✅ |
-| Auto Setup | ✅ |
-
----
-
-# 🛠 Requirements
+🛠 Requirements
 
 - Android 7.0+
 - Latest Termux Version
@@ -274,22 +174,32 @@ from the main menu.
 
 ---
 
-# 📂 Project Structure
+📂 Project Structure
 
-```text
-Termux-Setup-Tool-Pro/
+Termux-Setup-/
 │
-├── setup.sh
+├── ariyan-setup.sh
 ├── README.md
 │
 └── assets/
-    ├── dashboard.jpg
-    └── banner.jpg
-```
 
 ---
 
-# 🚀 Why Use This Tool?
+🔄 Updating
+
+Update the tool using:
+
+git pull
+
+Or select:
+
+[6] Update Tool
+
+from the menu.
+
+---
+
+🚀 Why Use This Tool?
 
 - Beginner Friendly
 - Fast Installation
@@ -302,19 +212,17 @@ Termux-Setup-Tool-Pro/
 
 ---
 
-# 👨‍💻 Developer
+👨‍💻 Developer
 
-```text
-Name     : ARIYAN SIAM 
-Project  : Termux Setup Tool Pro
-Version  : 1.0
-Language : Bash
-Platform : Android (Termux)
-```
+Developer : Ariyan
+Project   : Termux Setup Tool Pro
+Version   : 1.0
+Language  : Bash
+Platform  : Android (Termux)
 
 ---
 
-# ⚠ Disclaimer
+⚠️ Disclaimer
 
 This project is intended for:
 
@@ -322,14 +230,13 @@ This project is intended for:
 - Termux Customization
 - Environment Setup
 
-The developer is not responsible for any damage,
-data loss, or misuse of this software.
+The developer is not responsible for any damage, data loss, or misuse of this software.
 
 Use at your own responsibility.
 
 ---
 
-# 🤝 Contributing
+🤝 Contributing
 
 Contributions are welcome.
 
@@ -342,24 +249,22 @@ Feel free to:
 
 ---
 
-# ⭐ Support The Project
+⭐ Support
 
 If you like this project:
 
-⭐ Star the repository
+⭐ Star the Repository
 
-🍴 Fork the repository
+🍴 Fork the Repository
 
-📢 Share it with others
+📢 Share with Friends
 
-❤️ Support open-source development
+❤️ Support Open Source Development
 
 ---
 
 <p align="center">
-  <b>Made with ❤️ for the Termux Community</b>
-</p>
-
-<p align="center">
-  🚀 Termux Setup Tool Pro 🚀
+<b>Made with ❤️ for the Termux Community</b>
+</p><p align="center">
+🚀 Termux Setup Tool Pro 🚀
 </p>
